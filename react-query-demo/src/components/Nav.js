@@ -14,7 +14,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
-const pages = ["HomePage", "RQSuperHeroes", "SuperHeroes"];
+const pages = ["HomePage", "RQSuperHeroes", "SuperHeroes", "RQDependent","RQPaginated"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {

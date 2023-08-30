@@ -6,6 +6,8 @@ import { RQSuperHeroesPage } from "./components/RQSuperHeroes.page";
 import { SuperHeroesPage } from "./components/SuperHeroes.page";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { DependentQueriesPage } from "./components/DependentQueries.page";
+import { PaginatedQueriesPage } from "./components/PaginatedQueries.page";
 
 const queryClient = new QueryClient();
 
@@ -17,8 +19,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/HomePage" element={<HomePage />} />
-          <Route path="RQSuperHeroes" element={<RQSuperHeroesPage />} />
-          <Route path="SuperHeroes" element={<SuperHeroesPage />} />
+          <Route path="/RQSuperHeroes" element={<RQSuperHeroesPage />} />
+          <Route path="/SuperHeroes" element={<SuperHeroesPage />} />
+          <Route path="/RQDependent" element={<DependentQueriesPage email="vishwas@example.com" />} />
+          <Route path="RQPaginated" element={<PaginatedQueriesPage />}/>
         </Routes>
         <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
       </QueryClientProvider>
