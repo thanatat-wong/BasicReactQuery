@@ -8,6 +8,7 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { DependentQueriesPage } from "./components/DependentQueries.page";
 import { PaginatedQueriesPage } from "./components/PaginatedQueries.page";
+import { InfiniteQueriesPage } from "./components/InfiniteQueries.page";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +23,8 @@ function App() {
           <Route path="/RQSuperHeroes" element={<RQSuperHeroesPage />} />
           <Route path="/SuperHeroes" element={<SuperHeroesPage />} />
           <Route path="/RQDependent" element={<DependentQueriesPage email="vishwas@example.com" />} />
-          <Route path="RQPaginated" element={<PaginatedQueriesPage />}/>
+          <Route path="/RQPaginated" element={<PaginatedQueriesPage />}/>
+          <Route path="/RQInfinite" element={<InfiniteQueriesPage />}/>
         </Routes>
         <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
       </QueryClientProvider>

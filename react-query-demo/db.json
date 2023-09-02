@@ -14,6 +14,21 @@
       "id": 3,
       "name": "Wonder Woman",
       "alterEgo": "Princess Diana"
+    },
+    {
+      "name": "The Flash",
+      "alterEgo": "Barry Allen",
+      "id": 4
+    },
+    {
+      "name": "Spiderman",
+      "alterEgo": "Roger",
+      "id": 5
+    },
+    {
+      "name": "Shazam",
+      "alterEgo": "Billy Batson",
+      "id": 6
     }
   ],
   "users": [
@@ -25,7 +40,11 @@
   "channels": [
     {
       "id": "sitkmutt",
-      "courses": ["react", "vue", "angular"]
+      "courses": [
+        "react",
+        "vue",
+        "angular"
+      ]
     }
   ],
   "colors": [

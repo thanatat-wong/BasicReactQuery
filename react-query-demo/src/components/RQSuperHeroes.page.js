@@ -1,19 +1,32 @@
-import React from "react";
-import { useQuery } from "react-query";
-import axios from "axios";
-
-const fetchSuperHeroes = () => {
-  return axios.get("http://localhost:4000/superheroes");
-};
+import { useState } from "react";
+import {
+  useAddSuperHeroData,
+  useSuperHeroesData,
+} from "../hooks/useSuperHeroesData";
+import { Button, TextField } from "@mui/material";
 
 export const RQSuperHeroesPage = () => {
-  const { isLoading, data, isError, error, isFetching } = useQuery(
-    "super-heroes",
-    fetchSuperHeroes,
-    {
-      cacheTime: 5000,
-    }
-  );
+  const [name, setName] = useState("");
+  const [alterEgo, setAlterEgo] = useState("");
+
+  const { mutate: addHero } = useAddSuperHeroData();
+
+  const handleAddHeroClick = () => {
+    console.log({ name, alterEgo });
+    const hero = { name, alterEgo };
+    addHero(hero);
+  };
+
+  const onSuccess = (data) => {
+    console.log({ data });
+  };
+
+  const onError = (error) => {
+    console.log({ error });
+  };
+
+  const { isLoading, data, isError, error, isFetching, refetch } =
+    useSuperHeroesData(onSuccess, onError);
 
   console.log({ isLoading, isFetching });
 
@@ -28,8 +41,30 @@ export const RQSuperHeroesPage = () => {
   return (
     <>
       <h2>RQ Super Heroes Page</h2>
+      <div>
+        <TextField
+          variant="outlined"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          size="small"
+          sx={{ marginRight: 1 }}
+        />
+        <TextField
+          variant="outlined"
+          value={alterEgo}
+          onChange={(e) => setAlterEgo(e.target.value)}
+          size="small"
+          sx={{ marginRight: 1 }}
+        />
+        <Button variant="contained" onClick={handleAddHeroClick}>
+          Add Hero
+        </Button>
+      </div>
+      <Button variant="outlined" onClick={refetch} sx={{ marginTop: 5 }}>
+        Fetch heroes
+      </Button>
       {data?.data.map((hero) => {
-        return <div key={hero.name}>{hero.name}</div>;
+        return <div key={hero.id}>{hero.name}</div>;
       })}
     </>
   );
